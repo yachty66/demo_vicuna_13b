@@ -1,0 +1,27 @@
+{
+	"version": "1",
+	"inputs": [
+		{
+			"name": "prompt",
+			"type": "string",
+			"required": true,
+			"max": 2048,
+			"description": "The prompt to complete."
+		}
+	],
+	"examples": [
+		{
+			"inputs": {
+				"prompt": "Software developers start with a \"Hello, [MASK]!\" script."
+			},
+			"output": {
+				"outputs": {
+					"score": 0.8070755004882812,
+					"token": 2088,
+					"token_str": "world",
+					"sequence": "software developers start with a \" hello, world! \" script."
+				}
+			}
+		}
+	]
+}
