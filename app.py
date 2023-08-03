@@ -36,10 +36,8 @@ def handler(context: dict, request: Request) -> Response:
     prompt = request.json.get("prompt")
     model = context.get("model")
     tokenizer = context.get("tokenizer")
-    
     # Tokenize the prompt first before inputting it into the model
-    input_ids = tokenizer.encode(prompt, return_tensors='pt')
-    
+    input_ids = tokenizer.encode(prompt, return_tensors='pt')    
     outputs = model(input_ids)
     print("outputs")
     print(outputs)
@@ -47,7 +45,6 @@ def handler(context: dict, request: Request) -> Response:
         json = {"outputs": outputs}, 
         status=200
     )
-
 
 if __name__ == "__main__":
     app.serve()
