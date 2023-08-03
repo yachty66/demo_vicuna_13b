@@ -6,7 +6,6 @@ from transformers import pipeline
 import torch
 
 app = Potassium("my_app")
-
 #i need to run the fucking model on inference. on banana. how are we going to do this here
 
 # @app.init runs at startup, and loads models into the app's context
@@ -25,7 +24,7 @@ def init():
         model_basename=model_basename,  
         use_safetensors=True,
         trust_remote_code=True,
-        device="cuda:0",
+        device="cpu",
         use_triton=use_triton,
         quantize_config=None)
     print("return context")
@@ -41,7 +40,10 @@ def init():
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
     print("starting handler")
+    #froe
     prompt = request.json.get("prompt")
+    print("prompt:")
+    print(prompt)
     model = context.get("model")
     tokenizer = context.get("tokenizer")
     
@@ -49,11 +51,14 @@ def handler(context: dict, request: Request) -> Response:
     #prompt from test file is probably loaded into the json file. 
     #prompt = event['input']['prompt']
     
+    #i really need to check what the error is here. if i get what the error is i can do something effecvtive against it
+    #hop q
     prompt_template=f'''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
 
     USER: Hello, who are you?
     ASSISTANT:
     '''
+    
     print("getting input ids")
     input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
     

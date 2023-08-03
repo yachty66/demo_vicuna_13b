@@ -13,7 +13,11 @@ my_model = client.Client(
 # to receive in your Potassium app. Here is an 
 # example for a basic BERT model:
 inputs = {
-    "prompt": "In the summer I like [MASK].",
+    "prompt": '''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
+
+    USER: Hello, who are you?
+    ASSISTANT:
+    '''
 }
 
 # Call your model's inference endpoint on Banana.
