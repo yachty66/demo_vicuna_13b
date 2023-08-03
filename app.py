@@ -42,28 +42,18 @@ def init():
 def handler(context: dict, request: Request) -> Response:
     print("starting handler")
     prompt = request.json.get("prompt")
+    print("prompt:")
+    print(prompt)
     model = context.get("model")
     tokenizer = context.get("tokenizer")
-    
-    #given that works. what are the next steps? need to load prompt individually based 
-    #prompt from test file is probably loaded into the json file. 
-    #prompt = event['input']['prompt']
-    
-    prompt_template=f'''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
-
-    USER: Hello, who are you?
-    ASSISTANT:
-    '''
     print("getting input ids")
-    input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
-    
+    input_ids = tokenizer(prompt, return_tensors='pt').input_ids.cuda()
     output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
     print("output:")
     print(output)
     result = tokenizer.decode(output[0])
     print("result:")
     print(result)
-    
     return Response(
         json = {"outputs": result}, 
         status=200
