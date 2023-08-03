@@ -7,6 +7,8 @@ import torch
 
 app = Potassium("my_app")
 
+#i need to run the fucking model on inference. on banana. how are we going to do this here
+
 # @app.init runs at startup, and loads models into the app's context
 @app.init
 def init():
@@ -36,13 +38,21 @@ def handler(context: dict, request: Request) -> Response:
     prompt = request.json.get("prompt")
     model = context.get("model")
     tokenizer = context.get("tokenizer")
-    # Tokenize the prompt first before inputting it into the model
-    input_ids = tokenizer.encode(prompt, return_tensors='pt').to("cuda")    
-    outputs = model(input_ids)
-    print("outputs")
-    print(outputs)
+    
+    
+    #prompt = event['input']['prompt']
+    prompt_template=f'''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
+
+    USER: Hello, who are you?
+    ASSISTANT:
+    '''
+    
+    input_ids = tokenizer(prompt_template, return_tensors='pt').input_ids.cuda()
+    output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
+    result = tokenizer.decode(output[0])
+    
     return Response(
-        json = {"outputs": outputs}, 
+        json = {"outputs": result}, 
         status=200
     )
 
