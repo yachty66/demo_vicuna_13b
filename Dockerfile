@@ -13,13 +13,12 @@ RUN pip3 install --upgrade pip
 RUN pip install --upgrade pip
 
 # Install specific version of AutoGPTQ from GitHub with verbose output
-ARG AUTOGPTQ="0.2.2"
+ARG AUTOGPTQ="0.2.0+cu118-cp310-cp310-linux_x86_64"
 ENV CUDA_VERSION=""
 ENV GITHUB_ACTIONS=true
 ENV TORCH_CUDA_ARCH_LIST="8.0;8.6+PTX;8.9;9.0" 
 RUN pip3 uninstall -y auto-gptq && \
     pip3 install --no-cache-dir auto-gptq==$AUTOGPTQ
-
 
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
