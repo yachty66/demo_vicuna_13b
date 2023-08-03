@@ -10,7 +10,7 @@ app = Potassium("my_app")
 # @app.init runs at startup, and loads models into the app's context
 @app.init
 def init():
-    device = 0 if torch.cuda.is_available() else -1
+    #device = 0 if torch.cuda.is_available() else -1
     #model = pipeline('text generation', model='TheBloke/vicuna-7B-v1.3-GPTQ', device=device)
     model_name_or_path = "TheBloke/vicuna-7B-v1.3-GPTQ"
     model_basename = "vicuna-7b-v1.3-GPTQ-4bit-128g.no-act.order"
@@ -20,7 +20,7 @@ def init():
         model_basename=model_basename,  
         use_safetensors=True,
         trust_remote_code=True,
-        device="cpu",
+        device="cuda:0",
         use_triton=use_triton,
         quantize_config=None)
     #the only thing which needs to work is that here the right model is returned
