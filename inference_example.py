@@ -27,5 +27,3 @@ inputs = {
 result, meta = my_model.call("/", inputs)
 
 print(result)
-
-#

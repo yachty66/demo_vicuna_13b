@@ -27,5 +27,3 @@ ADD . .
 EXPOSE 8000
 
 CMD python3 -u app.py
-
-#
