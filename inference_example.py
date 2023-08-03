@@ -8,7 +8,11 @@ my_model = client.Client(
 
 #if no temperature or max_new_tokens are specified, the default values "temperature": 0.7, "max_new_tokens": 512 will be used:
 #inputs = {
-#    "prompt": "In the summer I like [MASK]."
+#    '''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
+#
+#    USER: Hello, who are you?
+#    ASSISTANT:
+#    '''
 #}
 inputs = {
     "prompt": '''A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
