@@ -37,7 +37,7 @@ def handler(context: dict, request: Request) -> Response:
     model = context.get("model")
     tokenizer = context.get("tokenizer")
     # Tokenize the prompt first before inputting it into the model
-    input_ids = tokenizer.encode(prompt, return_tensors='pt')    
+    input_ids = tokenizer.encode(prompt, return_tensors='pt').to("cuda")    
     outputs = model(input_ids)
     print("outputs")
     print(outputs)

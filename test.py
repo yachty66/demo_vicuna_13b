@@ -5,8 +5,8 @@ import banana_dev as client
 # Create a reference to your model on Banana
 my_model = client.Client(
     api_key="08515c3a-dd0c-4cb9-baa0-7e066d38a93f",
-    model_key="cfd2d153-e095-4f27-9ea5-4bd6d6da2227",
-    url="https://demo_vicuna_13b-lkuy40zc08.run.banana.dev",
+    model_key="51c122f1-a0ab-4530-bc7a-0848fe3e2fa8",
+    url="https://demo_vicuna_13b-lkv21kyo08.run.banana.dev",
 )
 
 # Specify the model's input JSON, what you expect 
