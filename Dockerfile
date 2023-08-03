@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y git
 # Install python packages
 RUN pip3 install --upgrade pip
 
+# Upgrade pip
+RUN pip install --upgrade pip
+
 # Install AutoGPTQ package from GitHub
 RUN pip install git+https://github.com/PanQiWei/AutoGPTQ@v0.2.1
 
