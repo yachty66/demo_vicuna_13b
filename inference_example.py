@@ -2,8 +2,8 @@ import banana_dev as client
 
 my_model = client.Client(
     api_key="08515c3a-dd0c-4cb9-baa0-7e066d38a93f",
-    model_key="51c122f1-a0ab-4530-bc7a-0848fe3e2fa8",
-    url="https://demo_vicuna_13b-lkv21kyo08.run.banana.dev",
+    model_key="f65e007c-a93b-465a-87fc-03a88cb0068b",
+    url="https://demo_vicuna_7b-lkvmehhy08.run.banana.dev",
 )
 
 #if no temperature or max_new_tokens are specified, the default values "temperature": 0.7, "max_new_tokens": 512 will be used:
@@ -27,3 +27,5 @@ inputs = {
 result, meta = my_model.call("/", inputs)
 
 print(result)
+
+#

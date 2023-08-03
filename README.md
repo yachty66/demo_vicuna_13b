@@ -61,3 +61,5 @@ Call the model in another terminal window with the Potassium app still running f
 ```sh
 curl -X POST -H 'Content-Type: application/json' -d '{"prompt": "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user\'s questions.\n\nUSER: Hello, who are you?\nASSISTANT:\n"}' http://localhost:8000
 ```
+
+#
