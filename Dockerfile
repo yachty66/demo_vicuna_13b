@@ -10,9 +10,7 @@ RUN apt-get update && apt-get install -y git
 RUN pip3 install --upgrade pip
 
 # Install AutoGPTQ package from GitHub
-# Download and install the specific package
-RUN wget https://github.com/PanQiWei/AutoGPTQ/releases/download/v0.2.2/auto_gptq-0.2.2+cu117-cp310-cp310-linux_x86_64.whl
-RUN pip install auto_gptq-0.2.2+cu117-cp310-cp310-linux_x86_64.whl
+RUN pip install git+https://github.com/PanQiWei/AutoGPTQ@v0.2.1
 
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
