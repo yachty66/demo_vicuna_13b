@@ -12,8 +12,9 @@ RUN pip3 install --upgrade pip
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install AutoGPTQ package from GitHub
-RUN pip install git+https://github.com/PanQiWei/AutoGPTQ@v0.2.1
+# Install specific version of AutoGPTQ from GitHub with verbose output
+RUN pip install -v git+https://github.com/PanQiWei/AutoGPTQ@v0.2.1
+
 
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
