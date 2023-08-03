@@ -19,3 +19,6 @@ def download_model() -> tuple:
 
 if __name__ == "__main__":
     download_model()
+    
+    
+    

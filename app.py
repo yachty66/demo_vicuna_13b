@@ -28,12 +28,15 @@ def init() -> dict:
 def handler(context: dict, request: Request) -> Response:
     """Handle a request to generate text from a prompt."""
     prompt = request.json.get("prompt")
+    temperature = request.json.get("temperature", 0.7)
+    max_new_tokens = request.json.get("max_new_tokens", 512)
     model = context.get("model")
     tokenizer = context.get("tokenizer")
     input_ids = tokenizer(prompt, return_tensors='pt').input_ids.cuda()
-    output = model.generate(inputs=input_ids, temperature=0.7, max_new_tokens=512)
+    output = model.generate(inputs=input_ids, temperature=temperature, max_new_tokens=max_new_tokens)
     result = tokenizer.decode(output[0])
     return Response(json={"outputs": result}, status=200)
+
 
 if __name__ == "__main__":
     app.serve()
